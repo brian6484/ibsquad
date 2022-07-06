@@ -1,0 +1,10 @@
+spring:
+#  datasource:
+#    url: jdbc:h2://localhost/testdb
+#    username: sa
+#    password:
+#    driver-class-name: [JDBC ????]
+
+  h2:
+    console:
+      enabled: true
