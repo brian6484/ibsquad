@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href = "../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container{
+            max-width: 1000px;
+        }
+        .field-error {
+            border-color: #0dcaf0;
+            color: #5c636a;
+        }
+    </style>
+</head>
+<body>
+<div class = "container">
+    <div class ="py-0 text-center">
+        <h2> Register new member</h2>
+    </div>
+
+    <h4 class = "mb-0">Member info</h4>
+
+    <form action="" th:action th:object="${member}" method="post">
+        <div>
+            <label for= "name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" class="form-control">
+        </div>
+
+        <div>
+            <label for= "loginId">Login id:</label>
+            <input type="text" id="loginId" th:field="*{loginId}" class="form-control">
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" th:field="*{password}" class="form-control">
+        </div>
+
+        <hr class="my-4">
+        <div class ="row">
+            <div class="col">
+                <button class="w-100 btn btn-primary btn-lg" type="submit"> Register!</button>
+            </div>
+            <div class="col">
+                <button class="w-100 btn btn-secondary btn-lg" onclick="location.href='home.html'"
+                        th:onclick="|location.href='home.html'|"
+                        type="button">Cancel</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

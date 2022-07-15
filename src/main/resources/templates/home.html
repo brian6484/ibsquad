@@ -2,25 +2,36 @@
 <html xmlns:th="http://thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <title>Title</title>
 </head>
 <body>
+<ul>
+    <h1> Welcome! </h1>
+    <li>
+        If you are new here, please register
+        <ul>
+            <li>
+                Right down below
+            </li>
+        </ul>
+    </li>
+</ul>
 
-<div class="container" style="max-width: 600px">
+<div class="container" style="max-width: 1000px">
     <div class="py-5 text-center">
         <h2>Home page</h2>
     </div>
 
     <div class = "row">
         <div class = "col">
-            <button class="w-100 btn btn-primary btn-lg" type="button"
-                    th:onclick="|location.href='@{/members/add}'|">
+            <button class="w-200 btn btn-primary btn-lg" type="button"
+                    th:onclick="|location.href='@{/members/register}'|">
                 Create account
             </button>
         </div>
         <div class = "col">
             <button class="w-100 btn btn-dark btn-lg"
-                    th:onclick="|location.href='@{/login}'|" type="button">
+                    th:onclick="|location.href='@{/members/login}'|" type="button">
                 Login
             </button>
         </div>
@@ -29,5 +40,6 @@
     <hr class ="my-4">
 
 </div>
+
 </body>
 </html>
