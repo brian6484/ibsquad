@@ -23,6 +23,11 @@
     <h4 class = "mb-0">Member info</h4>
 
     <form action="" th:action th:object="${member}" method="post">
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <p class ="field-error" th:each="err:${#fields.hasGlobalErrors()}" th:text="${err}"> testing field error</p>
+
+        </div>
+
         <div>
             <label for= "name">Name:</label>
             <input type="text" id="name" th:field="*{name}" class="form-control">
