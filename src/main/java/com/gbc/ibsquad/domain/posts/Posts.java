@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.util.Assert;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,6 +31,9 @@ public class Posts extends BaseTimeEntity {
 
     @Builder
     public Posts(String title, String content, String author){
+        Assert.hasText(title, "title must not be empty");
+        Assert.hasText(content, "content must not be empty");
+        Assert.hasText(author, "author must not be empty");
         this.title = title;
         this.content = content;
         this.author = author;

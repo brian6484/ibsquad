@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 //@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
-//@EnableJpaAuditing
+@EnableJpaAuditing
 @SpringBootApplication
 public class IbsquadApplication {
 
