@@ -5,13 +5,12 @@ import com.gbc.ibsquad.domain.member.MemberManualRepository;
 import com.gbc.ibsquad.domain.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,6 +22,20 @@ public class MemberController {
     public String addForm(@ModelAttribute("member") Member member){
         return "members/register";
     }
+
+//    @GetMapping("/read")
+//    public Member findMember(@PathVariable Long id){
+//        Optional<Member> member = Optional.ofNullable(memberRepository.findByLongId(id));
+//        return member.get();
+//    }
+
+//    @GetMapping("{id}/edit")
+//    public String editForm(@PathVariable Long id, Model model){
+//        Member member = memberRepository.findById(id);
+//
+//    }
+
+//    @PostMapping("{id}/edit")
 
     @PostMapping("/register")
     public String save(@Valid @ModelAttribute Member member, BindingResult result){

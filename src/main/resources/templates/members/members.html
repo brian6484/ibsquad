@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+    <div class = "py-5 text-center">
+        <h2>Member List</h2>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary float-end"
+                th:onclick="|location.href='@{/members/register}'|">Register Member</button>
+        </div>
+    </div>
+
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Login ID</th>
+                <th>Name</th>
+                <th>Pasword</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="item : ${members}">
+                <td><a href="register.html" th:href="@{/members/{name}(id={member.name})}" th:text="${member.name}">Member Name</a></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
