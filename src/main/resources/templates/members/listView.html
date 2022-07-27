@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <link href = "/css/bootstrap.min.css" rel="stylesheet">
     <title>Title</title>
 </head>
 <body>
@@ -20,11 +21,15 @@
             <td th:text="${member.loginId}"></td>
             <td th:text="${member.name}"></td>
             <td th:text="${member.password}"></td>
-            <td><a href="/members" th:href="@{|members/delete/${member.id}|}">Delete member</a></td>
+            <td>
+                <a th:href="@{|updateMember/${member.id}|}" class="btn btn-primary">Update member</a>
+                <a th:href="@{|deleteMember/${member.id}|}" class="btn btn-primary">Delete member</a>
+
+            </td>
         </tr>
     </table>
 </div>
-<a href="/">
+<a href="../">
     <button>Back to home</button>
 </a>
 

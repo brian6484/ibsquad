@@ -3,14 +3,12 @@ package com.gbc.ibsquad.web;
 import com.gbc.ibsquad.domain.member.Member;
 import com.gbc.ibsquad.domain.member.MemberRepository;
 import com.gbc.ibsquad.service.member.MemberService;
+import com.gbc.ibsquad.service.member.MemberServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -26,18 +24,6 @@ public class MemberController {
         return "members/register";
     }
 
-//    @GetMapping("/read")
-//    public Member findMember(@PathVariable Long id){
-//        Optional<Member> member = Optional.ofNullable(memberRepository.findByLongId(id));
-//        return member.get();
-//    }
-
-//    @GetMapping("{id}/edit")
-//    public String editForm(@PathVariable Long id, Model model){
-//        Member member = memberRepository.findById(id);
-//
-//    }
-
     @GetMapping("/listView")
     public String listView(Model model){
         model.addAttribute("members", memberService.getAllMembers());
@@ -45,11 +31,30 @@ public class MemberController {
     }
 
     @PostMapping("/register")
-    public String save(@Valid @ModelAttribute Member member, BindingResult result){
-        if (result.hasErrors()){
-            return "members/register";
-        }
-        memberRepository.save(member);
+    public String save(@ModelAttribute Member member){
+//        if (result.hasErrors()){
+//            return "members/register";
+//        }
+        memberService.saveMember(member);
+        return "redirect:/";
+    }
+
+    @GetMapping("/updateMember/{id}")
+    public String updateMember(@PathVariable(value="id") Long id, Model model){
+        Member member = memberService.getMemberById(id);
+        model.addAttribute("member", member);
+        return "members/update";
+    }
+
+//    @PostMapping("/updateMember/{id}")
+//    public String updateMember(@ModelAttribute("member") Member member){
+//        memberService.saveMember(member);
+//        return "/members/update";
+//    }
+
+    @GetMapping("/deleteMember/{id}")
+    public String deleteMember(@PathVariable(value="id") Long id){
+        memberService.deleteMemberById(id);
         return "redirect:/";
     }
 }
