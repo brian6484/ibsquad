@@ -20,8 +20,17 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping("/register")
-    public String addForm(@ModelAttribute("member") Member member){
+    public String addMember(@ModelAttribute("member") Member member){
         return "members/register";
+    }
+
+    @PostMapping("/register")
+    public String saveMember(@Valid @ModelAttribute Member member, BindingResult result){
+        if (result.hasErrors()){
+            return "members/register";
+        }
+        memberService.saveMember(member);
+        return "redirect:/";
     }
 
     @GetMapping("/listView")
@@ -30,27 +39,12 @@ public class MemberController {
         return "members/listView";
     }
 
-    @PostMapping("/register")
-    public String save(@ModelAttribute Member member){
-//        if (result.hasErrors()){
-//            return "members/register";
-//        }
-        memberService.saveMember(member);
-        return "redirect:/";
-    }
-
     @GetMapping("/updateMember/{id}")
     public String updateMember(@PathVariable(value="id") Long id, Model model){
         Member member = memberService.getMemberById(id);
         model.addAttribute("member", member);
         return "members/update";
     }
-
-//    @PostMapping("/updateMember/{id}")
-//    public String updateMember(@ModelAttribute("member") Member member){
-//        memberService.saveMember(member);
-//        return "/members/update";
-//    }
 
     @GetMapping("/deleteMember/{id}")
     public String deleteMember(@PathVariable(value="id") Long id){

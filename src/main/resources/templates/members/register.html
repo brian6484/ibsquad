@@ -29,17 +29,20 @@
 
         <div>
             <label for= "name">Name:</label>
-            <input type="text" id="name" th:field="*{name}" class="form-control">
+            <input type="text" id="name" th:field="*{name}" class="form-control" th:errorclass="field-error">
+            <div class="field-error" th:errors="*{name}"></div>
         </div>
 
         <div>
             <label for= "loginId">Login id:</label>
-            <input type="text" id="loginId" th:field="*{loginId}" class="form-control">
+            <input type="text" id="loginId" th:field="*{loginId}" class="form-control" th:errorclass="field-error">
+            <div class="field-error" th:errors="*{loginId}"></div>
         </div>
 
         <div>
             <label for="password">Password:</label>
-            <input type="password" id="password" th:field="*{password}" class="form-control">
+            <input type="password" id="password" th:field="*{password}" class="form-control" th:errorclass="field-error">
+            <div class="field-error" th:errors="*{password}"></div>
         </div>
 
         <hr class="my-4">

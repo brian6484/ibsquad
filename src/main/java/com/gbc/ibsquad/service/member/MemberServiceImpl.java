@@ -2,7 +2,6 @@ package com.gbc.ibsquad.service.member;
 
 import com.gbc.ibsquad.domain.member.Member;
 import com.gbc.ibsquad.domain.member.MemberRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +39,12 @@ public class MemberServiceImpl implements MemberService{
             throw new RuntimeException("Employee not found for id::" + id);
         }
         return member;
+    }
+
+    @Override
+    public Optional<Member> getMemberByloginId(String loginId) {
+        return getAllMembers().stream()
+                .filter(member -> member.getLoginId().equals(loginId))
+                .findFirst();
     }
 }
