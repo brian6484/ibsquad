@@ -21,4 +21,5 @@ public class Member {
     private String name;
     @NotEmpty
     private String password;
+
 }
