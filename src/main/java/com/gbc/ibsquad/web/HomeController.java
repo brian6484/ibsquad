@@ -19,10 +19,6 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class HomeController {
     private final MemberService memberService;
-//    @GetMapping("/")
-    public String home() {
-        return "home";
-    }
 
     @GetMapping("/")
     public String homeLogin(HttpServletRequest request, Model model){
